@@ -26,7 +26,7 @@ In order for the configuration to be encrypted you need to provide an age key wi
 git-agecrypt init
 git-agecrypt config add -i ~/.age/$(hostname)
 ```
-2. Create a file called `git-agecrypt.toml` at the root of the repository with the following content (Replace `PUBLIC_KEY` with yours. You can find it by executing `cat ~/.age/$(hostname)`.):
+2. Create a file called `git-agecrypt.toml` at the root of the repository with the following content (Replace `PUBLIC_KEY` with yours. You can find it by executing `age-keygen -y ~/.age/$(hostname)`.):
 ```toml
 [config]
 "src/**" = ["PUBLIC_KEY"]
