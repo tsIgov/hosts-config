@@ -5,7 +5,7 @@ Contains personal host configurations.
 Execute the following script:
 ```
  curl -O https://raw.githubusercontent.com/tsIgov/hosts-config/main/deploy.sh
- chmod 775 deploy.sh
+ chmod 755 deploy.sh
  ./deploy.sh $(hostname)
  ```
 
