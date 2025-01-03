@@ -12,15 +12,8 @@ fi
 
 SCRIPT_PATH=$(realpath $0)
 
-clone_repo
-unlock_repo
-link_configs
-install
-
-rm $SCRIPT_PATH
-
 clone_repo() {
-	git clone --single-branch --branch $BRANCH_NAME https://github.com/tsIgov/hosts-config.git $REPO_LOCATION
+	git clone --branch $BRANCH_NAME https://github.com/tsIgov/hosts-config.git $REPO_LOCATION
 }
 
 unlock_repo() {
@@ -36,7 +29,7 @@ unlock_repo() {
 }
 
 link_configs() {
-	sudo rm -f /etc/nixos
+	sudo rm -rf /etc/nixos
 	sudo ln -s $REPO_LOCATION/src /etc/nixos
 }
 
@@ -44,3 +37,10 @@ install() {
 	sudo nixos-generate-config
 	sudo nixos-rebuild switch --flake $(realpath /etc/nixos)#$BRANCH_NAME
 }
+
+clone_repo
+unlock_repo
+link_configs
+install
+
+rm $SCRIPT_PATH
